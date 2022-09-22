@@ -1,7 +1,11 @@
 import java.util.Date;
 
-class regata
-{
+public class Main {
+    public static void main(String args) {
+        
+    }
+}
+class regata {
     String posizione;
     float lunghezza;
     Date data;
@@ -11,8 +15,7 @@ class regata
     void Finisci(){}
 }
 
-class barca
-{
+class Barca {
     String nome;
     String nazionalita;
     String modello;
@@ -25,8 +28,7 @@ class barca
     void retrarreVela(){}
 }
 
-class sponsor
-{
+class Sponsor {
     String nome;
     String codiceFiscale;
     String indirizzo;
@@ -34,8 +36,7 @@ class sponsor
     void dareSoldi(){}
 }
 
-class equipaggio
-{
+class Equipaggio {
     String nome;
     int posizioneSullaClassifica;
     Persona skipper;
@@ -45,8 +46,7 @@ class equipaggio
     Persona drizzista;
 }
 
-class Persona
-{
+class Persona {
     String nome;
     int eta;
     float altezza;

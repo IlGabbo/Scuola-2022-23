@@ -9,10 +9,15 @@ function factorial(num) {
 }
 
 function modulo(num) {
-    if (num % 2 == 0)
-
+    if (num % 2 === 0)
+        return true;
+    else
+        return false;
 }
 
 let input = parseInt(prompt("Enter a number"));
 if (input != "NaN")
+{
     alert(factorial(input).toString());
+    alert(modulo(input) ? "The number is even" : "The number is odd")
+}

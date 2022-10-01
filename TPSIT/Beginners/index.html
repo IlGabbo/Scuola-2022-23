@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="./static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
+    <script src="static/js/functions.js"></script>
+    <style>
+        html { color-scheme: light dark; }
+        div
+        {
+            margin: 50px 20px 20px;
+        }
+        label { margin-right: 5px }
+        span { font-weight: bold }
+    </style>
 </head>
 <body>
-
+    <div>
+        <h3>Days in a month</h3>
+        <label for="ex1Month">Month</label><input type="text" id="ex1Month">
+        <label for="ex1Year">Year</label><input type="text" id="ex1Year">
+        <button id="ex1Submit">Enter</button>
+        Days = <span id="ex1Result"></span>
+    </div>
+    <div>
+        <h3>Vote</h3>
+        <label for="ex2Vote">Vote</label><input type="text" id="ex2Vote">
+        <button id="ex2Submit">Enter</button>
+        Vote = <span id="ex2Result"></span>
+    </div>
+    <div>
+        <h3>Hours and minutes to Milliseconds</h3>
+        <label for="ex3Hours">Hours</label><input type="text" id="ex3Hours">
+        <label for="ex3Minutes">Minutes</label><input type="text" id="ex3Minutes">
+        <button id="ex3Submit">Enter</button>
+        Milliseconds = <span id="ex3Result"></span>
+    </div>
+    <div>
+        <h3>Fahrenheit to Celsius</h3>
+        <label for="ex4Temp">Fahrenheit</label><input type="text" id="ex4Temp">
+        <button id="ex4Submit">Enter</button>
+        Celsius = <span id="ex4Result"></span>
+    </div>
+    <div>
+        <h3>Timezones</h3>
+        <label for="ex5Timezone">Timezone (Options are = New York, Tokyo, Moscow)</label><input type="text" id="ex5Timezone">
+        <label for="ex5Hour">Hour</label><input type="text" id="ex5Hour">
+        <label for="ex5Minute">Minute</label><input type="text" id="ex5Minute">
+        <button id="ex5Submit">Enter</button>
+        The time in <span id="ex5TimezoneO"></span> is <span id="ex5Result"></span>
+    </div>
+    <script src="static/js/listeners.js"></script>
 </body>
 </html>

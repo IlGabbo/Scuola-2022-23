@@ -26,5 +26,5 @@ document.getElementById("ex5Submit").addEventListener("click", function () {
     let minute = document.getElementById("ex5Minute").value;
     document.getElementById("ex5TimezoneO").innerHTML = timezone;
     let output = TimezoneHour(timezone, hour, minute);
-    document.getElementById("ex5Result").innerHTML = output.hour +  ":" + output.minute;
+    document.getElementById("ex5Result").innerHTML = output.hour + ":" + output.minute;
 })

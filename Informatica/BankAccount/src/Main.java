@@ -92,9 +92,10 @@ public class Main {
                             System.out.println("Your balance is " + user.userBalance);
                         }
                     }
-                    return;
+                    break;
                 case 3:
                     System.out.println(user.bankAccount.balance);
+                    break;
             }
         }
     }
@@ -164,7 +165,7 @@ class AccountHolder {
     }
 
     void withdrawal(float withdrawalBalance) throws Exception {
-        if (bankAccount.balance - bankAccount.FIDO <= withdrawalBalance) {
+        if (bankAccount.balance - bankAccount.FIDO >= withdrawalBalance) {
             bankAccount.balance -= withdrawalBalance;
             userBalance += withdrawalBalance;
         } else

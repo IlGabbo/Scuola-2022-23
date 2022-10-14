@@ -60,12 +60,12 @@ public class Main {
 
     static void userMenu(AccountHolder user) {
         float temp;
-        System.out.println("0. Exit");
-        System.out.println("1. Withdraw");
-        System.out.println("2. Deposit");
-        System.out.println("3. Show balance");
-
         while (true) {
+            System.out.println("0. Exit");
+            System.out.println("1. Withdraw");
+            System.out.println("2. Deposit");
+            System.out.println("3. Show balance");
+            System.out.println("4. Update user balance");
             switch (scanner.nextInt()) {
                 case 0:
                     return;
@@ -92,9 +92,19 @@ public class Main {
                             System.out.println("Your balance is " + user.userBalance);
                         }
                     }
-                    return;
+                    break;
                 case 3:
                     System.out.println(user.bankAccount.balance);
+                    break;
+                case 4:
+                    System.out.println("How much do you want to add to your wallet?");
+                    temp = scanner.nextFloat();
+                    if (temp > 0) {
+                        user.updateWallet(temp);
+                    } else {
+                        System.out.println("Enter a positive number");
+                    }
+                    break;
             }
         }
     }
@@ -177,5 +187,9 @@ class AccountHolder {
             userBalance -= depositBalance;
         } else
             throw new Exception();
+    }
+
+    void updateWallet(float walletBalance) {
+        userBalance += walletBalance;
     }
 }

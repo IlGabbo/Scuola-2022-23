@@ -96,7 +96,6 @@ public class Main {
                 case 3:
                     System.out.println(user.bankAccount.balance);
                     break;
-<<<<<<< HEAD
                 case 4:
                     System.out.println("How much do you want to add to your wallet?");
                     temp = scanner.nextFloat();
@@ -106,8 +105,6 @@ public class Main {
                         System.out.println("Enter a positive number");
                     }
                     break;
-=======
->>>>>>> 635e1d0183af8942e92695b927c38bc6e1355406
             }
         }
     }

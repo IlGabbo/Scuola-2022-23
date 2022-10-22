@@ -13,6 +13,8 @@ public class Main {
         System.out.println("0. Exit");
         System.out.println("1. Enter a pin");
         System.out.println("2. Admin Mode");
+
+        System.out.print("\033[H\033[2J");
         switch (scanner.nextInt()) {
             case 0 -> System.exit(0);
             case 1 -> {

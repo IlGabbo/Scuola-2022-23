@@ -9,31 +9,31 @@ function setup() {
 }
 
 function draw() {
-    drawFlower(0);
-    drawFlower(w / 2);
-    drawFlower(w);
+    drawFlower(0, h/2, diameter);
+    drawFlower(w / 2, h/2, diameter);
+    drawFlower(w, h/2, diameter);
 }
 
-function drawFlower(x) {
+function drawFlower(x, y, d) {
     strokeWeight(4);
     stroke("black");
     fill("orange");
-    circle(x - radius, h / 2 + radius, diameter)
+    circle(x - radius, y + radius, d)
 
     strokeWeight(4);
     stroke("black");
     fill("orange");
-    circle(x + radius, h / 2 + radius, diameter)
+    circle(x + radius, y + radius, d)
 
     strokeWeight(4);
     stroke("black");
     fill("orange");
-    circle(x - radius, h / 2 - radius, diameter)
+    circle(x - radius, y - radius, d)
 
     strokeWeight(4);
     stroke("black");
     fill("orange");
-    circle(x + radius, h / 2 - radius, diameter)
+    circle(x + radius, y - radius, d)
 
     strokeWeight(4);
     stroke("black");

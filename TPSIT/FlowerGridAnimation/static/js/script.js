@@ -1,5 +1,5 @@
-let w = 600;
-let h = 300;
+let w = window.innerWidth;
+let h = window.innerHeight;
 let diameter = 50;
 let radius = diameter / 2;
 
@@ -20,14 +20,14 @@ let j = diameter;
 
 function draw() {
     frameRate(5);
-    if (i < (w / diameter) * diameter && drawBool === true) {
+    if (i < (w / diameter) * diameter) {
         drawFlower(i, j, diameter);
         i += diameter * 2;
     } else {
         i = diameter;
         j += diameter * 2;
     }
-    if (j > (h / diameter) * diameter && drawBool === true) {
+    if (j > (h / diameter) * diameter) {
         noLoop();
     }
 }

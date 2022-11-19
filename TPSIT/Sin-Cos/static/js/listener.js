@@ -18,7 +18,7 @@ frequencyInput.addEventListener("input", function (e) {
 
 let resetInput = document.querySelector("[name=reset]");
 
-resetInput.addEventListener("onClick", function (e) {
+resetInput.addEventListener("click", function (e) {
     e.preventDefault();
     resetDrawing();
 })

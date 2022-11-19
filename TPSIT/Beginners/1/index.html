@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beginner EX</title>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
+    <script src="static/js/functions.js"></script>
+    <style>
+        html {
+            color-scheme: light dark;
+        }
+
+        div {
+            margin: 50px 20px 20px;
+        }
+
+        label {
+            margin-right: 5px
+        }
+
+        span {
+            font-weight: bold
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h3>Days in a month</h3>
+    <label for="ex1Month">Month (1 = January, 2 = February, 12 = December)</label><input id="ex1Month" type="text">
+    <label for="ex1Year">Year</label><input id="ex1Year" type="text">
+    <button id="ex1Submit">Enter</button>
+    Days = <span id="ex1Result"></span>
+</div>
+<script src="static/js/listeners.js"></script>
+</body>
+</html>

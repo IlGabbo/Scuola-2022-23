@@ -1,0 +1,9 @@
+html,
+body {
+    background-image: url('/static/img/bruh.gif');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+}

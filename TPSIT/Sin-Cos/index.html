@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+    <script src="./static/js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="formContainer">
+    <form>
+        <label>
+            Amplitude
+            <input min="0" max="200" type="range" name="amplitude">
+        </label>
+        <label>
+            Phase
+            <input min="-100" max="100" type="range" name="phase">
+        </label>
+        <label>
+            Frequency
+            <input min="0" max="10" type="range" name="frequency">
+        </label>
+        <button name="reset">Reset</button>
+    </form>
+    <script src="./static/js/listener.js"></script>
+</div>
+</body>
+</html>

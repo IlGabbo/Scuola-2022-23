@@ -13,7 +13,9 @@ public class Main {
                     """
                             0: Add employee
                             1: Add project
-                            2: View project"""
+                            2: View project
+                            3: Exit
+                            """
             );
             input = scanner.nextInt();
 
@@ -30,24 +32,45 @@ public class Main {
                     if (temp == -1) {
                         System.out.println("There is already a project");
                     } else {
-                        System.out.println("Project created\n" +
-                                "Name : " + company.project.name + "\n" +
-                                "Employees assigned : " + company.project.employees.size()
-                        );
-                        company.project.printEmployees();
+                        company.project.printProjectInfo();
                     }
                 }
                 case 2 -> {
-                    try {
-                        if (company.project == null) {
-                            System.out.println("There is no project");
-                        }
-                    } catch (java.lang.NullPointerException ignored) {
+                    if (company.project == null) {
+                        System.out.println("There is no project");
+                        break;
                     }
-                    //Continue here
+                    projectMenu(company.project);
                 }
             }
-        } while (input != -1);
+        } while (input != 3);
+    }
+
+    static void projectMenu(Project project) {
+        int input;
+        do {
+            System.out.println(
+                    """
+                            0: View Project info
+                            1: Add project milestone
+                            2: Add project task
+                            3: Complete task
+                            4: Exit
+                            """
+            );
+            input = scanner.nextInt();
+            switch (input) {
+                case 0 -> project.printProjectInfo();
+                case 1 -> {
+                    System.out.println("Enter the milestone's name");
+                    String temp = scanner.next();
+                    project.milestones.add(new Milestone(temp));
+                }
+                case 2 -> {
+                    //TODO add the task adding system; Look at line 157 for reference
+                }
+            }
+        } while (input != 5);
     }
 }
 
@@ -61,6 +84,15 @@ class Project {
     public Project(String name, ArrayList<Employee> employees) {
         this.name = name;
         this.employees = employees;
+    }
+
+    void printProjectInfo()
+    {
+        System.out.println("Project info:\n" +
+                "Name : " + name + "\n" +
+                "Employees assigned : " + employees.size()
+        );
+        printEmployees();
     }
 
     void printEmployees() {
@@ -81,6 +113,10 @@ class Employee {
 }
 
 class Milestone {
+    public Milestone(String name) {
+        this.name = name;
+    }
+
     String name;
     float percentage = 0.0f;
     ArrayList<Task> tasks;
@@ -113,11 +149,12 @@ class Company {
             if (!this.project.isComplete) {
                 return -1;
             }
-        } catch (java.lang.NullPointerException ignored) {
+        } catch (NullPointerException ignored) {
         }
         System.out.println("Enter the project name");
         String tempName = Main.scanner.next();
         ArrayList<Employee> tempEmployeeList = new ArrayList<>();
+        //TODO maybe print all the employees with their corresponding index first?
         System.out.println("Enter employees by index who will work on this project\n" +
                 "Enter -1 to exit");
         int temp;

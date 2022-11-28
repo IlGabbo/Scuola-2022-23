@@ -44,6 +44,7 @@ public class Main {
                         }
                     } catch (java.lang.NullPointerException ignored) {
                     }
+                    //Continue here
                 }
             }
         } while (input != -1);

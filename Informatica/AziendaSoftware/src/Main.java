@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//TODO percentages and should be done
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static Company company = new Company();
@@ -20,7 +21,7 @@ public class Main {
         ⣿⡗⠀⠢⠡⡱⡸⣔⢵⢱⢸⠈⠀⡪⣳⣳⢹⢜⡵⣱⢱⡱⣳⡹⣵⣻⢔⢅⢬⡷
         ⣷⡇⡂⠡⡑⢕⢕⠕⡑⠡⢂⢊⢐⢕⡝⡮⡧⡳⣝⢴⡐⣁⠃⡫⡒⣕⢏⡮⣷⡟
         ⣷⣻⣅⠑⢌⠢⠁⢐⠠⠑⡐⠐⠌⡪⠮⡫⠪⡪⡪⣺⢸⠰⠡⠠⠐⢱⠨⡪⡪⡰
-        ⣯⢷⣟⣇⡂⡂⡌⡀⠀⠁⡂⠅⠂⠀⡑⡄⢇⠇⢝⡨⡠⡁⢐⠠⢀⢪⡐⡜⡪⡊
+        ⣯⢷⣟⣇⡂⡂⡌⡀⠀⠁⡂⠅⠂⠀⡑⡄⢇⠇⢝⡨⡠⡁⢐⠠⢀⢪⡐⡜⡪⡊0
         ⣿⢽⡾⢹⡄⠕⡅⢇⠂⠑⣴⡬⣬⣬⣆⢮⣦⣷⣵⣷⡗⢃⢮⠱⡸⢰⢱⢸⢨⢌
         ⣯⢯⣟⠸⣳⡅⠜⠔⡌⡐⠈⠻⠟⣿⢿⣿⣿⠿⡻⣃⠢⣱⡳⡱⡩⢢⠣⡃⠢⠁
         ⡯⣟⣞⡇⡿⣽⡪⡘⡰⠨⢐⢀⠢⢢⢄⢤⣰⠼⡾⢕⢕⡵⣝⠎⢌⢪⠪⡘⡌⠀
@@ -84,8 +85,9 @@ public class Main {
             );
             input = scanner.nextInt();
             switch (input) {
-                //TODO add more stuff to project info like percentage (still need to do that btw), print critical tasks when and if I get around to doing that
+                //TODO add more stuff to project info like percentage (should be the last thing hopefully)
                 case 0 -> {
+                    project.checkCriticalTasks();
                     project.printProjectInfo();
                 }
                 case 1 -> {
@@ -94,14 +96,7 @@ public class Main {
                     project.addMilestone(temp);
                 }
                 case 2 -> {
-                    System.out.println("Enter the milestone by index");
-                    for (int i = 0; i < project.milestones.size(); i++) {
-                        System.out.println(i + ": " + project.milestones.get(i).name);
-                    }
-                    int temp = scanner.nextInt();
-                    Milestone tempMilestone = project.milestones.get(temp);
-
-                    System.out.println("Chosen " + tempMilestone.name);
+                    Milestone tempMilestone = project.getMilestone();
 
                     System.out.println("Enter the task's assigned employee by index");
                     /*
@@ -126,7 +121,7 @@ public class Main {
                     }
                     Employee tempEmployee = project.employees.get(scanner.nextInt());
 
-                    if (checkEmployee(project, tempEmployee) == -1) {
+                    if (project.checkEmployee(tempEmployee) == -1) {
                         System.out.println("Employee assigned to another task");
                         break;
                     }
@@ -144,14 +139,8 @@ public class Main {
                     );
                 }
                 case 3 -> {
-                    System.out.println("Enter the milestone by index");
-                    for (int i = 0; i < project.milestones.size(); i++) {
-                        System.out.println(i + ": " + project.milestones.get(i).name);
-                    }
-                    int temp = scanner.nextInt();
-                    Milestone tempMilestone = project.milestones.get(temp);
-
-                    System.out.println("Chosen " + tempMilestone.name);
+                    Milestone tempMilestone = project.getMilestone();
+                    int temp;
 
                     System.out.println("Enter the task by index");
                     /*
@@ -181,25 +170,17 @@ public class Main {
                     tempTask.isComplete = true;
                 }
                 case 4 -> {
-                    project.day++;
-                    //TODO print critical tasks maybe
+                    project.projectDay++;
+                    System.out.println("The day is " + project.projectDay);
+                    project.checkCriticalTasks();
+                    System.out.println("Critical tasks");
+                    for (Task task : project.getCriticalTasks()) {
+                        System.out.println(task.name + " Due to:" + task.deadline + "Assigned to " + task.name);
+                    }
                 }
             }
         } while (input != 5);
     }
-
-    static int checkEmployee(Project project, Employee employee) {
-        //should work, who fucking knows, maybe check on it with the debugger ASAP
-        ArrayList<Milestone> milestones = project.milestones;
-        for (Milestone milestone : milestones) {
-            for (Task task : milestone.tasks) {
-                if (task.assignedEmployee == employee)
-                    return -1;
-            }
-        }
-        return 0;
-    }
-
 }
 
 class Project {
@@ -209,7 +190,7 @@ class Project {
     boolean isComplete = false;
     float percentage = 0.0f;
 
-    int day = 0;
+    int projectDay = 0;
 
     public Project(String name, ArrayList<Employee> employees) {
         this.name = name;
@@ -227,11 +208,77 @@ class Project {
                 "Employees assigned : " + employees.size() + "\n"
         );
         printEmployees();
+        System.out.println("Milestones");
+        for (Milestone milestone : milestones) {
+            milestone.checkComplete();
+            System.out.println("Milestone: " + milestone.name + ", " + milestone.percentage + ", " + (milestone.isComplete ? "Completed" : "Not completed"));
+            for (Task task : milestone.tasks) {
+                System.out.println("Task " + task.name + ", " + task.deadline  + ", " + task.assignedEmployee.name  + " " + task.assignedEmployee.surname + ", " + (task.isComplete ? "Completed" : "Not completed") + ", " + (task.isCritical ? "Critical" : "Not critical"));
+            }
+        }
+        System.out.println();
     }
 
     void printEmployees() {
         for (Employee employee : employees) {
             System.out.println(employee.name + " " + employee.surname);
+        }
+    }
+
+    int checkEmployee(Employee employee) {
+        //should work, who fucking knows, maybe check on it with the debugger ASAP
+        for (Milestone milestone : milestones) {
+            for (Task task : milestone.tasks) {
+                if (task.assignedEmployee == employee)
+                    return -1;
+            }
+        }
+        return 0;
+    }
+
+    ArrayList<Task> getCriticalTasks() {
+        ArrayList<Task> taskArrayList = new ArrayList<>();
+        for (Milestone milestone : milestones) {
+            for (Task task : milestone.tasks) {
+                if (task.isComplete) {
+                    taskArrayList.add(task);
+                }
+            }
+        }
+        return taskArrayList;
+    }
+
+    Milestone getMilestone() {
+        System.out.println("Enter the milestone by index");
+        for (int i = 0; i < milestones.size(); i++) {
+            System.out.println(i + ": " + milestones.get(i).name);
+        }
+        int temp = Main.scanner.nextInt();
+        System.out.println("Chosen " + milestones.get(temp));
+        return milestones.get(temp);
+    }
+
+    void calcPerc() {
+        percentage = milestones.size() / getCompletedMilestones();
+    }
+
+    float getCompletedMilestones() {
+        float counter = 0.0f;
+        for (Milestone milestone : milestones) {
+            if (milestone.isComplete) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    void checkCriticalTasks() {
+        for (Milestone milestone : milestones) {
+            for (Task task : milestone.tasks) {
+                if (projectDay >= task.deadline) {
+                    task.isCritical = true;
+                }
+            }
         }
     }
 }
@@ -256,6 +303,20 @@ class Milestone {
         this.name = name;
     }
 
+    void checkComplete() {
+        int notComplete = 0;
+        for (Task task : tasks) {
+            if (!task.isComplete) {
+                notComplete++;
+            }
+        }
+        isComplete = notComplete == 0;
+    }
+
+    void calcPerc() {
+
+    }
+
     //why
     void addTask(String name, int deadline, Employee assignedEmployee) {
         tasks.add(new Task(name, deadline, assignedEmployee));
@@ -266,7 +327,7 @@ class Task {
     String name;
     int deadline;
 
-    //just check the current day with the deadline
+    //TODO just check the current day with the deadline
     boolean isCritical = false;
     boolean isComplete = false;
     Employee assignedEmployee;

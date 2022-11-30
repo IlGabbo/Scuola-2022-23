@@ -99,8 +99,11 @@ public class Main {
 
                         System.out.println("Enter the task's assigned employee by index");
                         for (int i = 0; i < project.employees.size(); i++) {
-                            System.out.println(i + ": " + project.employees.get(i).name + " " + project.employees.get(i).surname);
+                            if (!project.employees.get(i).isAssigned) {
+                                System.out.println(i + ": " + project.employees.get(i).name + " " + project.employees.get(i).surname);
+                            }
                         }
+
                         Employee tempEmployee = project.employees.get(scanner.nextInt());
 
                         if (project.checkEmployee(tempEmployee) == -1) {
@@ -128,6 +131,7 @@ public class Main {
                         Milestone tempMilestone = project.getMilestone();
                         int temp;
 
+                        //TODO don't print already complete tasks
                         System.out.println("Enter the task by index");
                         for (int i = 0; i < tempMilestone.tasks.size(); i++) {
                             System.out.println(i + ": " + tempMilestone.tasks.get(i).name);
@@ -137,6 +141,7 @@ public class Main {
                         Task tempTask = tempMilestone.tasks.get(temp);
                         System.out.println("Chosen " + tempTask.name);
                         tempTask.isComplete = true;
+                        tempTask.assignedEmployee.isAssigned = false;
                         project.checkComplete();
                     } else {
                         System.out.println("No milestones");
@@ -145,6 +150,7 @@ public class Main {
                 case 4 -> {
                     project.projectDay++;
                     System.out.println("The day is " + project.projectDay);
+                    project.checkComplete();
                     project.checkCriticalTasks();
                     System.out.println("Critical tasks");
                     for (Task task : project.getCriticalTasks()) {
@@ -157,6 +163,7 @@ public class Main {
 }
 
 class Project {
+
     String name;
     ArrayList<Milestone> milestones = new ArrayList<>();
     ArrayList<Employee> employees;
@@ -175,13 +182,13 @@ class Project {
     }
 
     void printProjectInfo() {
+        calcPerc();
         System.out.println("Project info:\n" +
                 "Name : " + name + "\n" +
                 "Percentage" + percentage + "\n" +
                 "Employees assigned : " + employees.size() + "\n"
         );
         printEmployees();
-        calcPerc();
 
         System.out.println("Milestones");
         for (Milestone milestone : milestones) {
@@ -288,6 +295,7 @@ class Project {
 }
 
 class Employee {
+    boolean isAssigned = false;
     String name;
     String surname;
 
@@ -332,6 +340,7 @@ class Milestone {
     }
 
     void addTask(String name, int deadline, Employee assignedEmployee) {
+        assignedEmployee.isAssigned = true;
         tasks.add(new Task(name, deadline, assignedEmployee));
     }
 }
@@ -363,6 +372,11 @@ class Company {
         );
     }
 
+    /**
+     *
+     * @return 0 if a project is successfully added <br>
+     * -1 if a project doesn't get added
+     */
     int addProject() {
         try {
             if (!this.project.isComplete) {

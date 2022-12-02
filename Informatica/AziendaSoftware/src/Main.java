@@ -69,6 +69,10 @@ public class Main {
         } while (input != 3);
     }
 
+    /**
+     * The project menu
+     * @param project the current project selected, program can be modified for multiple projects
+     */
     static void projectMenu(Project project) {
         int input;
         do {
@@ -163,14 +167,39 @@ public class Main {
     }
 }
 
+/**
+ * Class representing a project
+ */
 class Project {
 
+    /**
+     * Name of the project
+     */
     String name;
+
+    /**
+     * Milestones of the project
+     */
     ArrayList<Milestone> milestones = new ArrayList<>();
+
+    /**
+     * Employees assigned to the project
+     */
     ArrayList<Employee> employees;
+
+    /**
+     * Indicates whether the project is complete
+     */
     boolean isComplete = false;
+
+    /**
+     * Indicates the overall percentage of the project by dividing the completed milestones
+     */
     float percentage = 0.0f;
 
+    /**
+     * The projects' day
+     */
     int projectDay = 0;
 
     public Project(String name, ArrayList<Employee> employees) {
@@ -178,10 +207,18 @@ class Project {
         this.employees = employees;
     }
 
+    /**
+     * Helper method for adding milestones
+     *
+     * @param name name of the milestones
+     */
     void addMilestone(String name) {
         milestones.add(new Milestone(name));
     }
 
+    /**
+     * Prints the project info including each milestone and each task
+     */
     void printProjectInfo() {
         calcPerc();
         System.out.println("Project info:\n" +
@@ -222,12 +259,21 @@ class Project {
         System.out.println();
     }
 
+    /**
+     * Helper method for printProjectInfo() to print all employees
+     */
     void printEmployees() {
         for (Employee employee : employees) {
             System.out.println(employee.name + " " + employee.surname);
         }
     }
 
+    /**
+     * Checks if a employee is already assigned to a non-complete task
+     *
+     * @return 0 if an employee is not assigned to a non-complete task <br>
+     * -1 if an employee is already assigned to a non-complete task
+     */
     int checkEmployee(Employee employee) {
         for (Milestone milestone : milestones) {
             for (Task task : milestone.tasks) {
@@ -238,6 +284,11 @@ class Project {
         return 0;
     }
 
+    /**
+     * Gets all the critical tasks
+     *
+     * @return A list containing all critical tasks
+     */
     ArrayList<Task> getCriticalTasks() {
         ArrayList<Task> taskArrayList = new ArrayList<>();
         for (Milestone milestone : milestones) {
@@ -250,6 +301,11 @@ class Project {
         return taskArrayList;
     }
 
+    /**
+     * Gets a milestone through user input
+     *
+     * @return The selected milestone
+     */
     Milestone getMilestone() {
         System.out.println("Enter the milestone by index");
         for (int i = 0; i < milestones.size(); i++) {
@@ -260,10 +316,18 @@ class Project {
         return milestones.get(temp);
     }
 
+    /**
+     * Calculates the project percentage
+     */
     void calcPerc() {
         percentage = (getCompletedMilestones() / milestones.size()) * 100;
     }
 
+    /**
+     * Gets all completed milestones
+     *
+     * @return Number of completed milestones
+     */
     float getCompletedMilestones() {
         float counter = 0.0f;
         for (Milestone milestone : milestones) {
@@ -275,6 +339,9 @@ class Project {
         return counter;
     }
 
+    /**
+     * Checks for critical tasks and sets them as required
+     */
     void checkCriticalTasks() {
         for (Milestone milestone : milestones) {
             for (Task task : milestone.tasks) {
@@ -285,6 +352,9 @@ class Project {
         }
     }
 
+    /**
+     * Checks is the project is completed
+     */
     void checkComplete() {
         for (Milestone milestone : milestones) {
             for (Task task : milestone.tasks) {
@@ -298,9 +368,23 @@ class Project {
     }
 }
 
+/**
+ * Class representing the individual employee
+ */
 class Employee {
+    /**
+     * Indicates whether the employee is assigned to a task
+     */
     boolean isAssigned = false;
+
+    /**
+     * Name of the employee
+     */
     String name;
+
+    /**
+     * Surname of the employee
+     */
     String surname;
 
     public Employee(String name, String surname) {
@@ -309,16 +393,37 @@ class Employee {
     }
 }
 
+/**
+ * Class representing a milestone
+ */
 class Milestone {
+    /**
+     * Name of the milestone
+     */
     String name;
+
+    /**
+     * Indicates the overall percentage of the project by dividing the completed tasks
+     */
     float percentage = 0.0f;
+
+    /**
+     * Tasks of this milestone
+     */
     ArrayList<Task> tasks = new ArrayList<>();
+
+    /**
+     * Indicates whether the milestone is complete
+     */
     boolean isComplete = false;
 
     public Milestone(String name) {
         this.name = name;
     }
 
+    /**
+     * Checks whether the milestone is complete by enumerating through all the tasks
+     */
     void checkComplete() {
         int notComplete = 0;
         for (Task task : tasks) {
@@ -329,10 +434,18 @@ class Milestone {
         isComplete = notComplete == 0;
     }
 
+    /**
+     * Calculates the milestone percentage
+     */
     void calcPerc() {
         percentage = (getCompletedTasks() / tasks.size()) * 100;
     }
 
+    /**
+     * Gets all the completed tasks
+     *
+     * @return The number of completed tasks
+     */
     float getCompletedTasks() {
         float counter = 0.0f;
         for (Task task : tasks) {
@@ -343,17 +456,46 @@ class Milestone {
         return counter;
     }
 
+    /**
+     * Helper method for adding tasks
+     *
+     * @param name             Name of the task
+     * @param deadline         Deadline in days of the task
+     * @param assignedEmployee The employee assigned to the task
+     */
     void addTask(String name, int deadline, Employee assignedEmployee) {
         assignedEmployee.isAssigned = true;
         tasks.add(new Task(name, deadline, assignedEmployee));
     }
 }
 
+/**
+ * Class representing a task
+ */
 class Task {
+    /**
+     * Name of the task
+     */
     String name;
+
+    /**
+     * Deadline of the task in days
+     */
     int deadline;
+
+    /**
+     * Indicates whether the task is critical, meaning the deadline has been passed
+     */
     boolean isCritical = false;
+
+    /**
+     * Indicates whether the task is completed
+     */
     boolean isComplete = false;
+
+    /**
+     * Employee assigned to the task
+     */
     Employee assignedEmployee;
 
     public Task(String name, int deadline, Employee assignedEmployee) {
@@ -363,10 +505,25 @@ class Task {
     }
 }
 
+/**
+ * Class representing the company
+ */
 class Company {
+    /**
+     * List containing all the employees who work at the company
+     */
     ArrayList<Employee> employees = new ArrayList<>();
+
+    /**
+     * Current project
+     */
     Project project;
 
+    /**
+     * Helper method for adding an employee
+     * @param name Name of the employee
+     * @param surname Surname of the employee
+     */
     void addEmployee(String name, String surname) {
         employees.add(
                 new Employee(
@@ -377,6 +534,7 @@ class Company {
     }
 
     /**
+     * Adds or replaces a project
      * @return 0 if a project is successfully added <br>
      * -1 if a project doesn't get added
      */

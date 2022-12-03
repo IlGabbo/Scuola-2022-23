@@ -1,6 +1,6 @@
 let accelY = 0;
 let accelX = 0;
-let x = 0;
+let x = -25;
 let y;
 let diameter = 50;
 let radius = diameter / 2;

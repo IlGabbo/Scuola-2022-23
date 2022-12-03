@@ -5,41 +5,15 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static Company company = new Company();
 
-    //when the programming is object oriented
-    /*
-        ⠀⠀⠀⡯⡯⡾⠝⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢊⠘⡮⣣⠪⠢⡑⡌
-        ⠀⠀⠀⠟⠝⠈⠀⠀⠀⠡⠀⠠⢈⠠⢐⢠⢂⢔⣐⢄⡂⢔⠀⡁⢉⠸⢨⢑⠕⡌
-        ⠀⠀⡀⠁⠀⠀⠀⡀⢂⠡⠈⡔⣕⢮⣳⢯⣿⣻⣟⣯⣯⢷⣫⣆⡂⠀⠀⢐⠑⡌
-        ⢀⠠⠐⠈⠀⢀⢂⠢⡂⠕⡁⣝⢮⣳⢽⡽⣾⣻⣿⣯⡯⣟⣞⢾⢜⢆⠀⡀⠀⠪
-        ⣬⠂⠀⠀⢀⢂⢪⠨⢂⠥⣺⡪⣗⢗⣽⢽⡯⣿⣽⣷⢿⡽⡾⡽⣝⢎⠀⠀⠀⢡
-        ⣿⠀⠀⠀⢂⠢⢂⢥⢱⡹⣪⢞⡵⣻⡪⡯⡯⣟⡾⣿⣻⡽⣯⡻⣪⠧⠑⠀⠁⢐
-        ⣿⠀⠀⠀⠢⢑⠠⠑⠕⡝⡎⡗⡝⡎⣞⢽⡹⣕⢯⢻⠹⡹⢚⠝⡷⡽⡨⠀⠀⢔
-        ⣿⡯⠀⢈⠈⢄⠂⠂⠐⠀⠌⠠⢑⠱⡱⡱⡑⢔⠁⠀⡀⠐⠐⠐⡡⡹⣪⠀⠀⢘
-        ⣿⣽⠀⡀⡊⠀⠐⠨⠈⡁⠂⢈⠠⡱⡽⣷⡑⠁⠠⠑⠀⢉⢇⣤⢘⣪⢽⠀⢌⢎
-        ⣿⢾⠀⢌⠌⠀⡁⠢⠂⠐⡀⠀⢀⢳⢽⣽⡺⣨⢄⣑⢉⢃⢭⡲⣕⡭⣹⠠⢐⢗
-        ⣿⡗⠀⠢⠡⡱⡸⣔⢵⢱⢸⠈⠀⡪⣳⣳⢹⢜⡵⣱⢱⡱⣳⡹⣵⣻⢔⢅⢬⡷
-        ⣷⡇⡂⠡⡑⢕⢕⠕⡑⠡⢂⢊⢐⢕⡝⡮⡧⡳⣝⢴⡐⣁⠃⡫⡒⣕⢏⡮⣷⡟
-        ⣷⣻⣅⠑⢌⠢⠁⢐⠠⠑⡐⠐⠌⡪⠮⡫⠪⡪⡪⣺⢸⠰⠡⠠⠐⢱⠨⡪⡪⡰
-        ⣯⢷⣟⣇⡂⡂⡌⡀⠀⠁⡂⠅⠂⠀⡑⡄⢇⠇⢝⡨⡠⡁⢐⠠⢀⢪⡐⡜⡪⡊
-        ⣿⢽⡾⢹⡄⠕⡅⢇⠂⠑⣴⡬⣬⣬⣆⢮⣦⣷⣵⣷⡗⢃⢮⠱⡸⢰⢱⢸⢨⢌
-        ⣯⢯⣟⠸⣳⡅⠜⠔⡌⡐⠈⠻⠟⣿⢿⣿⣿⠿⡻⣃⠢⣱⡳⡱⡩⢢⠣⡃⠢⠁
-        ⡯⣟⣞⡇⡿⣽⡪⡘⡰⠨⢐⢀⠢⢢⢄⢤⣰⠼⡾⢕⢕⡵⣝⠎⢌⢪⠪⡘⡌⠀
-        ⡯⣳⠯⠚⢊⠡⡂⢂⠨⠊⠔⡑⠬⡸⣘⢬⢪⣪⡺⡼⣕⢯⢞⢕⢝⠎⢻⢼⣀⠀
-        ⠁⡂⠔⡁⡢⠣⢀⠢⠀⠅⠱⡐⡱⡘⡔⡕⡕⣲⡹⣎⡮⡏⡑⢜⢼⡱⢩⣗⣯⣟
-        ⢀⢂⢑⠀⡂⡃⠅⠊⢄⢑⠠⠑⢕⢕⢝⢮⢺⢕⢟⢮⢊⢢⢱⢄⠃⣇⣞⢞⣞⢾
-        ⢀⠢⡑⡀⢂⢊⠠⠁⡂⡐⠀⠅⡈⠪⠪⠪⠣⠫⠑⡁⢔⠕⣜⣜⢦⡰⡎⡯⡾⡽
-     */
     public static void main(String[] args) {
         int input;
         do {
-            System.out.println(
-                    """
-                            0: Add employee
-                            1: Add project
-                            2: View project
-                            3: Exit
-                            """
-            );
+            System.out.println("""
+                    0: Add employee
+                    1: Add project
+                    2: View project
+                    3: Exit
+                    """);
             input = scanner.nextInt();
 
             switch (input) {
@@ -71,21 +45,20 @@ public class Main {
 
     /**
      * The project menu
+     *
      * @param project the current project selected, program can be modified for multiple projects
      */
     static void projectMenu(Project project) {
         int input;
         do {
-            System.out.println(
-                    """
-                            0: View Project info
-                            1: Add project milestone
-                            2: Add project task
-                            3: Complete task
-                            4: Advance day
-                            5: Exit
-                            """
-            );
+            System.out.println("""
+                    0: View Project info
+                    1: Add project milestone
+                    2: Add project task
+                    3: Complete task
+                    4: Advance day
+                    5: Exit
+                    """);
             input = scanner.nextInt();
             switch (input) {
                 case 0 -> {
@@ -121,11 +94,7 @@ public class Main {
                         System.out.println("Enter the task's deadline in days");
                         int tempDeadLine = scanner.nextInt();
 
-                        tempMilestone.addTask(
-                                tempName,
-                                tempDeadLine,
-                                tempEmployee
-                        );
+                        tempMilestone.addTask(tempName, tempDeadLine, tempEmployee);
                     } else {
                         System.out.println("No milestones");
                     }
@@ -221,39 +190,15 @@ class Project {
      */
     void printProjectInfo() {
         calcPerc();
-        System.out.println("Project info:\n" +
-                "Name : " + name + "\n" +
-                "Percentage" + percentage + "\n" +
-                "Employees assigned : " + employees.size() + "\n"
-        );
+        System.out.println("Project info:\n" + "Name : " + name + "\n" + "Percentage: " + percentage + "\n" + "Employees assigned : " + employees.size() + "\n");
         printEmployees();
 
         System.out.println("Milestones");
         for (Milestone milestone : milestones) {
             milestone.checkComplete();
-            /*
-                    ———————No interpolated strings?————————
-                            ⠀⣞⢽⢪⢣⢣⢣⢫⡺⡵⣝⡮⣗⢷⢽⢽⢽⣮⡷⡽⣜⣜⢮⢺⣜⢷⢽⢝⡽⣝
-                            ⠸⡸⠜⠕⠕⠁⢁⢇⢏⢽⢺⣪⡳⡝⣎⣏⢯⢞⡿⣟⣷⣳⢯⡷⣽⢽⢯⣳⣫⠇
-                            ⠀⠀⢀⢀⢄⢬⢪⡪⡎⣆⡈⠚⠜⠕⠇⠗⠝⢕⢯⢫⣞⣯⣿⣻⡽⣏⢗⣗⠏⠀
-                            ⠀⠪⡪⡪⣪⢪⢺⢸⢢⢓⢆⢤⢀⠀⠀⠀⠀⠈⢊⢞⡾⣿⡯⣏⢮⠷⠁⠀⠀
-                            ⠀⠀⠀⠈⠊⠆⡃⠕⢕⢇⢇⢇⢇⢇⢏⢎⢎⢆⢄⠀⢑⣽⣿⢝⠲⠉⠀⠀⠀⠀
-                            ⠀⠀⠀⠀⠀⡿⠂⠠⠀⡇⢇⠕⢈⣀⠀⠁⠡⠣⡣⡫⣂⣿⠯⢪⠰⠂⠀⠀⠀⠀
-                            ⠀⠀⠀⠀⡦⡙⡂⢀⢤⢣⠣⡈⣾⡃⠠⠄⠀⡄⢱⣌⣶⢏⢊⠂⠀⠀⠀⠀⠀⠀
-                            ⠀⠀⠀⠀⢝⡲⣜⡮⡏⢎⢌⢂⠙⠢⠐⢀⢘⢵⣽⣿⡿⠁⠁⠀⠀⠀⠀⠀⠀⠀
-                            ⠀⠀⠀⠀⠨⣺⡺⡕⡕⡱⡑⡆⡕⡅⡕⡜⡼⢽⡻⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                            ⠀⠀⠀⠀⣼⣳⣫⣾⣵⣗⡵⡱⡡⢣⢑⢕⢜⢕⡝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                            ⠀⠀⠀⣴⣿⣾⣿⣿⣿⡿⡽⡑⢌⠪⡢⡣⣣⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                            ⠀⠀⠀⡟⡾⣿⢿⢿⢵⣽⣾⣼⣘⢸⢸⣞⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                            ⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                    —————————————————————————————
-            */
-            System.out.println("Milestone: " + milestone.name + ", Percentage:" + milestone.percentage + ", " + (milestone.isComplete ? "Completed" : "Not completed"));
+            System.out.println("Milestone: " + milestone.name + ", Percentage: " + milestone.percentage + ", " + (milestone.isComplete ? "Completed" : "Not completed"));
             for (Task task : milestone.tasks) {
-                System.out.println(
-                        "Task " + task.name + ", Deadline:" + task.deadline + ", Employee assigned" + task.assignedEmployee.name + " " + task.assignedEmployee.surname
-                                + ", " + (task.isComplete ? "Completed" : "Not completed") + ", " + (task.isCritical ? "Critical" : "Not critical"
-                        ));
+                System.out.println("Task " + task.name + ", Deadline:" + task.deadline + ", Employee assigned" + task.assignedEmployee.name + " " + task.assignedEmployee.surname + ", " + (task.isComplete ? "Completed" : "Not completed") + ", " + (task.isCritical ? "Critical" : "Not critical"));
             }
         }
         System.out.println();
@@ -277,8 +222,7 @@ class Project {
     int checkEmployee(Employee employee) {
         for (Milestone milestone : milestones) {
             for (Task task : milestone.tasks) {
-                if (task.assignedEmployee == employee && !task.isComplete)
-                    return -1;
+                if (task.assignedEmployee == employee && !task.isComplete) return -1;
             }
         }
         return 0;
@@ -309,7 +253,9 @@ class Project {
     Milestone getMilestone() {
         System.out.println("Enter the milestone by index");
         for (int i = 0; i < milestones.size(); i++) {
-            System.out.println(i + ": " + milestones.get(i).name);
+            if (!milestones.get(i).isComplete) {
+                System.out.println(i + ": " + milestones.get(i).name);
+            }
         }
         int temp = Main.scanner.nextInt();
         System.out.println("Chosen " + milestones.get(temp).name);
@@ -521,20 +467,17 @@ class Company {
 
     /**
      * Helper method for adding an employee
-     * @param name Name of the employee
+     *
+     * @param name    Name of the employee
      * @param surname Surname of the employee
      */
     void addEmployee(String name, String surname) {
-        employees.add(
-                new Employee(
-                        name,
-                        surname
-                )
-        );
+        employees.add(new Employee(name, surname));
     }
 
     /**
      * Adds or replaces a project
+     *
      * @return 0 if a project is successfully added <br>
      * -1 if a project doesn't get added
      */
@@ -548,8 +491,7 @@ class Company {
         System.out.println("Enter the project name");
         String tempName = Main.scanner.next();
         ArrayList<Employee> tempEmployeeList = new ArrayList<>();
-        System.out.println("Enter employees by index who will work on this project\n" +
-                "Enter -1 to exit");
+        System.out.println("Enter employees by index who will work on this project\n" + "Enter -1 to exit");
         for (int i = 0; i < employees.size(); i++) {
             System.out.println(i + ": " + employees.get(i).name + " " + employees.get(i).surname);
         }

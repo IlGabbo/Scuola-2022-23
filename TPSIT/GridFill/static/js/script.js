@@ -22,6 +22,9 @@ function* drawSquares() {
             yield;
         }
     }
+    
+    I giglocommenti
+    
     */
     while (j < h) {
         circle(i, j, 8);
